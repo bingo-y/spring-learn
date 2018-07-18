@@ -2,6 +2,8 @@ package com.bingo.chapter41.mapper;
 
 import com.bingo.chapter41.domain.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.Map;
 
@@ -14,7 +16,10 @@ import java.util.Map;
 public interface UserMapper {
 
     @Select("select * from user where id = #{id}")
-    User findById(Integer id);
+    User findById(@Param("id") Integer id);
+
+    @Update("update user set name = #{name} where id = #{id}")
+    void updateUser(@Param("id") Integer id, @Param("name") String name);
 
     @Results({
             @Result(property = "name", column = "name"),

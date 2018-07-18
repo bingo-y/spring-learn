@@ -2,6 +2,8 @@ package com.bingo.chapter41;
 
 import com.bingo.chapter41.domain.User;
 import com.bingo.chapter41.mapper.UserMapper;
+import com.bingo.chapter41.service.UserService;
+import net.sf.ehcache.CacheManager;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +25,12 @@ public class Chapter41ApplicationTests {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    private CacheManager cacheManager;
 
 	@Test
 	public void testRedis() {
@@ -50,6 +58,21 @@ public class Chapter41ApplicationTests {
         map.put("name", "php");
         map.put("phone", "183695584448");
         userMapper.insertUser(map);
+    }
+
+    @Test
+    public void testEhcache() {
+	    long start = System.currentTimeMillis();
+        User user = userService.findById(1);
+        long end = System.currentTimeMillis();
+        userService.updateUser(1, "sqlserver");
+        long start2 = System.currentTimeMillis();
+        User user2 = userService.findById(1);
+        long end2 = System.currentTimeMillis();
+        System.out.println("user1:" + user.getName());
+        System.out.println("user1 use time: " + (end - start));
+        System.out.println("user2:" + user2.getName());
+        System.out.println("user2 use time: " + (end2 - start2));
     }
 
 }
