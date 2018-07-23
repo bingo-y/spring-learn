@@ -1,0 +1,25 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: tuyx
+    password: 123456
+    virtual-host: znjf-host
+    publisher-confirms: true #支持发布确认
+    publisher-returns: true #支持发布返回
+    template: #生产者
+      retry:
+        enabled: true
+        max-attempts: 3
+    listener: #消费者
+      simple:
+        acknowledge-mode: manual #消费者手动应答
+        prefetch: 1 #一个消费者处理的最大数量 没有ack返回的
+        concurrency: 1 #当前监听容器数 一个消费者并发处理量
+        max-concurrency: 1 #最大数
+        retry:
+          enabled: true
+          max-attempts: 3
+
+logging:
+  config: classpath:logback.xml
