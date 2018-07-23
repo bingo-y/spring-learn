@@ -5,16 +5,16 @@ spring:
     username: tuyx
     password: 123456
     virtual-host: znjf-host
-#    template: #Éú²úÕß
+#    template: #ç”Ÿäº§è€…
 #      retry:
 #        enabled: true
 #        max-attempts: 3
-#    listener: #Ïû·ÑÕß
+#    listener: #æ¶ˆè´¹è€…
 #      direct:
 #        retry:
 #          enabled: true
 #          max-attempts: 3
 #      simple:
 #        acknowledge-mode: manual
-#        prefetch: 15 #Ò»¸öÏû·ÑÕßÃ»ÓĞack·µ»ØµÄ×î´óÊıÁ¿
-#        concurrency: 1 #Ò»¸öÏû·ÑÕß²¢·¢´¦ÀíÁ¿
+#        prefetch: 15 #ä¸€ä¸ªæ¶ˆè´¹è€…æ²¡æœ‰ackè¿”å›çš„æœ€å¤§æ•°é‡
+#        concurrency: 1 #ä¸€ä¸ªæ¶ˆè´¹è€…å¹¶å‘å¤„ç†é‡
