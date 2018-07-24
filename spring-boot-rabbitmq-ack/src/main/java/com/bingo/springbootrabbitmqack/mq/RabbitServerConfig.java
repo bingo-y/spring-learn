@@ -115,7 +115,7 @@ public class RabbitServerConfig {
      */
     @Bean
     public Binding redirectBinding() {
-        return new Binding(QUEUE_REDIRECT, Binding.DestinationType.QUEUE, EXCHANGE_DL, ROUTING_DIRECT, null);
+        return new Binding(QUEUE_REDIRECT, Binding.DestinationType.QUEUE, EXCHANGE_DL, ROUTING_REDIRECT, null);
     }
 
 }

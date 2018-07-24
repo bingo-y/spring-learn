@@ -5,18 +5,18 @@ spring:
     username: tuyx
     password: 123456
     virtual-host: znjf-host
-    publisher-confirms: true #Ö§³Ö·¢²¼È·ÈÏ
-    publisher-returns: true #Ö§³Ö·¢²¼·µ»Ø
-    template: #Éú²úÕß
+    publisher-confirms: true #æ”¯æŒå‘å¸ƒç¡®è®¤
+    publisher-returns: true #æ”¯æŒå‘å¸ƒè¿”å›
+    template: #ç”Ÿäº§è€…
       retry:
         enabled: true
         max-attempts: 3
-    listener: #Ïû·ÑÕß
+    listener: #æ¶ˆè´¹è€…
       simple:
-        acknowledge-mode: manual #Ïû·ÑÕßÊÖ¶¯Ó¦´ğ
-        prefetch: 1 #Ò»¸öÏû·ÑÕß´¦ÀíµÄ×î´óÊıÁ¿ Ã»ÓĞack·µ»ØµÄ
-        concurrency: 1 #µ±Ç°¼àÌıÈİÆ÷Êı Ò»¸öÏû·ÑÕß²¢·¢´¦ÀíÁ¿
-        max-concurrency: 1 #×î´óÊı
+        acknowledge-mode: manual #æ¶ˆè´¹è€…æ‰‹åŠ¨åº”ç­”
+        prefetch: 2 #ä¸€ä¸ªæ¶ˆè´¹è€…å¤„ç†çš„æœ€å¤§æ•°é‡ æ²¡æœ‰ackè¿”å›çš„
+        concurrency: 1 #å½“å‰ç›‘å¬å®¹å™¨æ•° ä¸€ä¸ªæ¶ˆè´¹è€…å¹¶å‘å¤„ç†é‡
+        max-concurrency: 2 #æœ€å¤§æ•°
         retry:
           enabled: true
           max-attempts: 3

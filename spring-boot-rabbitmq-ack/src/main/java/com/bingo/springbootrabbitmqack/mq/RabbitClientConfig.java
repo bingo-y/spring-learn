@@ -61,6 +61,4 @@ public class RabbitClientConfig {
         });
         return rabbitTemplate;
     }
-
-
 }

@@ -32,7 +32,7 @@ public class DirectReceiver2 {
         log.debug("message2 arrive");
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         log.debug("DIRECT " + new String (message.getBody()));
-        log.debug("message2 listener thread: " + Thread.currentThread().getName());
+        log.debug("message2 listener thread id:{}, name:{}: ", Thread.currentThread().getId(), Thread.currentThread().getName());
     }
 
 }

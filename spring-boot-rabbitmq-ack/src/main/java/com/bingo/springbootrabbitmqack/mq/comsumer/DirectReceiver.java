@@ -27,13 +27,13 @@ public class DirectReceiver {
      * @param channel the channel
      * @throws IOException the io exception  这里异常需要处理
      */
-    @RabbitListener(queues = {RabbitServerConfig.QUEUE_DIRECT})
+    @RabbitListener(containerFactory = "rabbitListenerContainerFactory", queues = {RabbitServerConfig.QUEUE_DIRECT})
     public void message(Message message, Channel channel) throws IOException, InterruptedException {
         log.debug("message arrive");
         Thread.sleep(10L);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         log.debug("DIRECT " + new String (message.getBody()));
-        log.debug("message listener thread: " + Thread.currentThread().getName());
+        log.debug("message listener thread id:{}, name:{}: ", Thread.currentThread().getId(), Thread.currentThread().getName());
     }
 
     /**
