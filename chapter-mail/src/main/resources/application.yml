@@ -1,0 +1,18 @@
+spring:
+  mail:
+    host: smtp.qq.com
+    username: ${bingo.mail}
+    password: ${bingo.password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  thymeleaf:
+    enabled: true
+    prefix: "classpath:/templates/"
+bingo:
+  mail: "" # ÓÊÏäµØÖ·
+  password: "" # ÓÊÏäÊÚÈ¨Âë
