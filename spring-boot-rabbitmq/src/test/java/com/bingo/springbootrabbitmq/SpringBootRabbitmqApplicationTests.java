@@ -51,7 +51,7 @@ public class SpringBootRabbitmqApplicationTests {
     public void rabbitMQManyTest() {
         for (int i = 0; i < 20; i++) {
             rabbitSender1.send(i);
-            rabbitSender2.send(i);
+//            rabbitSender2.send(i);
         }
     }
 

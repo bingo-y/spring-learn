@@ -14,7 +14,7 @@ spring:
     listener: #消费者
       simple:
         acknowledge-mode: manual #消费者手动应答
-        prefetch: 2 #一个消费者处理的最大数量 没有ack返回的
+        prefetch: 2 #一个消费者处理的最大数量
         concurrency: 1 #当前监听容器数 一个消费者并发处理量
         max-concurrency: 2 #最大数
         retry:

@@ -27,7 +27,7 @@ public class DirectReceiver {
      * @param channel the channel
      * @throws IOException the io exception  这里异常需要处理
      */
-    @RabbitListener(containerFactory = "rabbitListenerContainerFactory", queues = {RabbitServerConfig.QUEUE_DIRECT})
+    @RabbitListener(queues = {RabbitServerConfig.QUEUE_DIRECT})
     public void message(Message message, Channel channel) throws IOException, InterruptedException {
         log.debug("message arrive");
         Thread.sleep(10L);
