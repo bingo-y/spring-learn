@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date: create in 2018/7/19 17:41
  * @Description: Fanout (广播 订阅)
  */
-@Configuration
+//@Configuration
 public class FanoutRabbitConfig {
 
     @Bean

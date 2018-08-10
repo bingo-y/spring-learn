@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date: create in 2018/7/19 16:35
  * @Description:
  */
-@Configuration
+//@Configuration
 public class SimpleRabbitConfig {
 
     @Bean

@@ -9,12 +9,12 @@ spring:
 #      retry:
 #        enabled: true
 #        max-attempts: 3
-#    listener: #消费者
+    listener: #消费者
 #      direct:
 #        retry:
 #          enabled: true
 #          max-attempts: 3
-#      simple:
+      simple:
 #        acknowledge-mode: manual
 #        prefetch: 15 #一个消费者没有ack返回的最大数量
-#        concurrency: 1 #一个消费者并发处理量
+        concurrency: 2 #一个消费者并发处理量

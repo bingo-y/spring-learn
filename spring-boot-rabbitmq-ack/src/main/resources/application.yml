@@ -10,7 +10,9 @@ spring:
     template: #生产者
       retry:
         enabled: true
-        max-attempts: 3
+        max-attempts: 2
+        initial-interval: 5000
+      mandatory: true
     listener: #消费者
       simple:
         acknowledge-mode: manual #消费者手动应答

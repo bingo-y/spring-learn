@@ -75,7 +75,7 @@ public class RabbitServerConfig {
         // x-dead-letter-exchange    声明  死信交换机
         args.put(DEAD_LETTER_QUEUE_KEY, EXCHANGE_DL);
         // x-dead-letter-routing-key    声明 死信路由键
-        args.put(DEAD_LETTER_ROUTING_KEY, ROUTING_DIRECT);
+        args.put(DEAD_LETTER_ROUTING_KEY, ROUTING_REDIRECT);
         return QueueBuilder.durable(QUEUE_DL).withArguments(args).build();
     }
 

@@ -2,7 +2,11 @@ package com.bingo.springbootrabbitmqack.controller;
 
 import com.bingo.springbootrabbitmqack.model.User;
 import com.bingo.springbootrabbitmqack.mq.RabbitServerConfig;
+import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +40,37 @@ public class RabbitController {
         return "ok";
     }
 
+    @RequestMapping("/send2")
+    public String sendDirect2(@RequestParam("name") String name) {
+        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+        User user = new User();
+        user.setName(name);
+        user.setAge(18);
+        rabbitTemplate.convertAndSend(RabbitServerConfig.EXCHANGE_DIRECT, "routing.bingo.direct222", user, new MessagePostProcessor() {
+            @Override
+            public Message postProcessMessage(Message message) throws AmqpException {
+                message.getMessageProperties().setCorrelationId(correlationData.getId());
+                message.getMessageProperties().setPriority(10);
+                return message;
+            }
+        }, correlationData);
+        return "ok";
+    }
+
     @RequestMapping("/send/dead/letter")
     public String sendDeadLetter(@RequestParam("name") String name) {
-        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
-        rabbitTemplate.convertAndSend(RabbitServerConfig.EXCHANGE_DL, RabbitServerConfig.ROUTING_DL, name, correlationData);
+        for (int i = 0; i < 20; i++) {
+            CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+            name = name + i;
+            rabbitTemplate.convertAndSend(RabbitServerConfig.EXCHANGE_DL, RabbitServerConfig.ROUTING_DL, name, message -> {
+                MessageProperties messageProperties = message.getMessageProperties();
+                // 设置过期时间 ms
+                messageProperties.setExpiration("10000");
+                messageProperties.setCorrelationId(correlationData.getId());
+                return message;
+            }, correlationData);
+        }
+
         return "ok";
     }
 

@@ -10,6 +10,7 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.retry.support.RetryTemplate;
 
 /**
  * @Author: tyx
@@ -40,12 +41,13 @@ public class RabbitClientConfig {
         rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         rabbitTemplate.setEncoding("UTF-8");
         // 开启returncallback yml 需要 配置 publisher-returns: true
-        rabbitTemplate.setMandatory(true);
+//        rabbitTemplate.setMandatory(true);
         rabbitTemplate.setReturnCallback(new RabbitTemplate.ReturnCallback() {
             @Override
             public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
-                String correlationId = message.getMessageProperties().getCorrelationId();
-                logger.debug("消息：{} 发送失败, 应答码：{} 原因：{} 交换机: {}  路由键: {}", correlationId, replyCode, replyText, exchange, routingKey);
+
+                logger.debug("消息：{} 发送失败, 应答码：{} 原因：{} 交换机: {}  路由键: {}",
+                        message.getMessageProperties().getCorrelationId(), replyCode, replyText, exchange, routingKey);
             }
         });
         // 消息确认 yml 需要配置 publisher-returns: true
