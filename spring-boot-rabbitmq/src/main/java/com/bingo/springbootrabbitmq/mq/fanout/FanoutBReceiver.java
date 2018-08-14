@@ -1,6 +1,8 @@
 package com.bingo.springbootrabbitmq.mq.fanout;
 
 import com.bingo.springbootrabbitmq.mq.RabbitMQConstant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -14,9 +16,11 @@ import org.springframework.stereotype.Component;
 @RabbitListener(queues = RabbitMQConstant.FANOUT_B_QUEUE)
 public class FanoutBReceiver {
 
+    Logger logger = LoggerFactory.getLogger(FanoutBReceiver.class);
+
     @RabbitHandler
     public void receiver(String message) {
-        System.out.println("FanoutBReceiver receiver: " + message);
+        logger.info("FanoutB receiver: {}", message);
     }
 
 }

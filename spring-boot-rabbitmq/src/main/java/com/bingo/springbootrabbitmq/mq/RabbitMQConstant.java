@@ -7,9 +7,14 @@ package com.bingo.springbootrabbitmq.mq;
  */
 public class RabbitMQConstant {
 
-    public static final String STRING_QUEUE = "bingo.string";
-    public static final String OBJECT_QUEUE = "bingo.object";
-    public static final String MANY_QUEUE = "bingo.many";
+    public static final String ROUTING_STRING = "bingo.string";
+    public static final String QUEUE_STRING = "bingo.string";
+
+    public static final String ROUTING_OBJECT = "bingo.object";
+    public static final String QUEUE_OBJECT = "bingo.object";
+
+    public static final String ROUTING_MANY = "bingo.many";
+    public static final String QUEUE_MANY = "bingo.many";
 
     public static final String TOPIC_MESSAGE_QUEUE = "bingo.topic.message";
     public static final String TOPIC_MESSAGES_QUEUE = "bingo.topic.message2";

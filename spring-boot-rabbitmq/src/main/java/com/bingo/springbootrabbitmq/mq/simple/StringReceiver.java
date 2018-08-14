@@ -1,6 +1,8 @@
 package com.bingo.springbootrabbitmq.mq.simple;
 
 import com.bingo.springbootrabbitmq.mq.RabbitMQConstant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -11,12 +13,14 @@ import org.springframework.stereotype.Component;
  * @Description: String消息接收
  */
 @Component
-@RabbitListener(queues = RabbitMQConstant.STRING_QUEUE)
+@RabbitListener(queues = RabbitMQConstant.QUEUE_STRING)
 public class StringReceiver {
+
+    Logger logger = LoggerFactory.getLogger(StringReceiver.class);
 
     @RabbitHandler
     public void receiver(String message) {
-        System.out.println("receiver string message: " + message);
+        logger.info("receiver string: {}", message);
     }
 
 }

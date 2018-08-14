@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   rabbitmq:
     host: localhost
@@ -5,16 +7,7 @@ spring:
     username: tuyx
     password: 123456
     virtual-host: znjf-host
-#    template: #生产者
-#      retry:
-#        enabled: true
-#        max-attempts: 3
-    listener: #消费者
-#      direct:
-#        retry:
-#          enabled: true
-#          max-attempts: 3
-      simple:
-#        acknowledge-mode: manual
-#        prefetch: 15 #一个消费者没有ack返回的最大数量
-        concurrency: 2 #一个消费者并发处理量
+#    listener:
+#      simple:
+#        concurrency: 1
+#        acknowledge-mode: auto

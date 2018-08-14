@@ -1,6 +1,9 @@
 package com.bingo.springbootrabbitmq.mq.direct;
 
 import com.bingo.springbootrabbitmq.mq.RabbitMQConstant;
+import com.bingo.springbootrabbitmq.mq.simple.StringSender;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,11 +16,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DirectSender {
 
+    Logger logger = LoggerFactory.getLogger(DirectSender.class);
+
     @Autowired
     AmqpTemplate amqpTemplate;
 
     public void sendMessage(String message) {
-        System.out.println("DirectSender send message: " + message);
+        logger.info("send message: {}", message);
         amqpTemplate.convertAndSend(RabbitMQConstant.DIRECT_EXCHANGE, RabbitMQConstant.DIRECT_ROUTING, message);
     }
 

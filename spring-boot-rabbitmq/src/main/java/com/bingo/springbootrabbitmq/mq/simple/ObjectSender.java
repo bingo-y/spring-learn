@@ -2,6 +2,8 @@ package com.bingo.springbootrabbitmq.mq.simple;
 
 import com.bingo.springbootrabbitmq.model.User;
 import com.bingo.springbootrabbitmq.mq.RabbitMQConstant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,12 +16,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ObjectSender {
 
+    Logger logger = LoggerFactory.getLogger(ObjectSender.class);
+
     @Autowired
     AmqpTemplate amqpTemplate;
 
     public void send(User user) {
-        System.out.println("send user message: " + user.toString());
-        amqpTemplate.convertAndSend(RabbitMQConstant.OBJECT_QUEUE, user);
+        logger.info("send user: {}", user.toString());
+        amqpTemplate.convertAndSend(RabbitMQConstant.ROUTING_OBJECT, user);
     }
 
 }

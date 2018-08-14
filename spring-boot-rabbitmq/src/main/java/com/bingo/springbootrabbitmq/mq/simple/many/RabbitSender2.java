@@ -1,6 +1,8 @@
 package com.bingo.springbootrabbitmq.mq.simple.many;
 
 import com.bingo.springbootrabbitmq.mq.RabbitMQConstant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,13 +15,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitSender2 {
 
+    Logger logger = LoggerFactory.getLogger(RabbitSender2.class);
+
     @Autowired
     AmqpTemplate amqpTemplate;
 
     public void send(Integer index) {
-        String message = "RabbitSender2 send message: " + index;
-        System.out.println(message);
-        amqpTemplate.convertAndSend(RabbitMQConstant.MANY_QUEUE, message);
+        String message = "sender2 message" + index;
+        logger.info(message);
+        amqpTemplate.convertAndSend(RabbitMQConstant.ROUTING_MANY, message);
     }
 
 }
