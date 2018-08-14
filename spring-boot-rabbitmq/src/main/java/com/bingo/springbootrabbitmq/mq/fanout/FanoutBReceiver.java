@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @Description: Fanout消息接收
  */
 @Component
-@RabbitListener(queues = RabbitMQConstant.FANOUT_B_QUEUE)
+@RabbitListener(queues = RabbitMQConstant.QUEUE_FANOUT_B)
 public class FanoutBReceiver {
 
     Logger logger = LoggerFactory.getLogger(FanoutBReceiver.class);

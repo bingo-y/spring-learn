@@ -22,12 +22,12 @@ public class FanoutSender {
 
     public void sendA(String message) {
         logger.info("send fanout a: {}", message);
-        amqpTemplate.convertAndSend(RabbitMQConstant.FANOUT_EXCHANGE, RabbitMQConstant.FANOUT_A_QUEUE, message);
+        amqpTemplate.convertAndSend(RabbitMQConstant.EXCHANGE_FANOUT, RabbitMQConstant.QUEUE_FANOUT_A, message);
     }
 
     public void sendB(String message) {
         logger.info("send fanout b: {}", message);
-        amqpTemplate.convertAndSend(RabbitMQConstant.FANOUT_EXCHANGE, RabbitMQConstant.FANOUT_B_QUEUE, message);
+        amqpTemplate.convertAndSend(RabbitMQConstant.EXCHANGE_FANOUT, RabbitMQConstant.QUEUE_FANOUT_B, message);
     }
 
 }

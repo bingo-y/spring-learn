@@ -17,17 +17,17 @@ public class FanoutRabbitConfig {
 
     @Bean
     public Queue fanoutQueueA() {
-        return new Queue(RabbitMQConstant.FANOUT_A_QUEUE);
+        return new Queue(RabbitMQConstant.QUEUE_FANOUT_A);
     }
 
     @Bean
     public Queue fanoutQueueB() {
-        return new Queue(RabbitMQConstant.FANOUT_B_QUEUE);
+        return new Queue(RabbitMQConstant.QUEUE_FANOUT_B);
     }
 
     @Bean
     FanoutExchange fanoutExchange() {
-        return new FanoutExchange(RabbitMQConstant.FANOUT_EXCHANGE);
+        return new FanoutExchange(RabbitMQConstant.EXCHANGE_FANOUT);
     }
 
     @Bean

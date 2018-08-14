@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @Description: String消息接收
  */
 @Component
-@RabbitListener(queues = RabbitMQConstant.TOPIC_MESSAGES_QUEUE)
+@RabbitListener(queues = RabbitMQConstant.QUEUE_TOPIC_MESSAGES)
 public class TopicReceiver2 {
 
     Logger logger = LoggerFactory.getLogger(TopicReceiver1.class);

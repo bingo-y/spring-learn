@@ -16,19 +16,19 @@ public class RabbitMQConstant {
     public static final String ROUTING_MANY = "bingo.many";
     public static final String QUEUE_MANY = "bingo.many";
 
-    public static final String TOPIC_MESSAGE_QUEUE = "bingo.topic.message";
-    public static final String TOPIC_MESSAGES_QUEUE = "bingo.topic.message2";
-    public static final String TOPIC_MESSAGE_ALL_QUEUE = "bingo.topic.#";
-    public static final String TOPIC_MESSAGE_1_QUEUE = "bingo.topic.1";
+    public static final String QUEUE_TOPIC_MESSAGE = "bingo.topic.message";
+    public static final String QUEUE_TOPIC_MESSAGES = "bingo.topic.message2";
+    public static final String ROUTING_TOPIC_MESSAGE_ALL = "bingo.topic.#";
+    public static final String QUEUE_TOPIC_MESSAGE_1 = "bingo.topic.1";
 
-    public static final String DIRECT_QUEUE = "bingo.direct";
-    public static final String DIRECT_ROUTING = "bingo.direct";
-    public static final String DIRECT_EXCHANGE = "direct_exchange";
+    public static final String QUEUE_DIRECT = "bingo.direct";
+    public static final String ROUTING_DIRECT = "bingo.direct";
+    public static final String EXCHANGE_DIRECT = "direct_exchange";
 
-    public static final String FANOUT_A_QUEUE = "bingo.fanout.a";
-    public static final String FANOUT_B_QUEUE = "bingo.fanout.b";
+    public static final String QUEUE_FANOUT_A = "bingo.fanout.a";
+    public static final String QUEUE_FANOUT_B = "bingo.fanout.b";
 
-    public static final String TOPIC_EXCHANGE = "topic_exchange";
-    public static final String FANOUT_EXCHANGE = "fanout_exchange";
+    public static final String EXCHANGE_TOPIC = "topic_exchange";
+    public static final String EXCHANGE_FANOUT = "fanout_exchange";
 
 }

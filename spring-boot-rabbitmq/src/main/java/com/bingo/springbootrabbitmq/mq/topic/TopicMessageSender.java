@@ -22,17 +22,17 @@ public class TopicMessageSender {
 
     public void sendMessage(String message) {
         logger.info("send message1: {}",  message);
-        amqpTemplate.convertAndSend(RabbitMQConstant.TOPIC_EXCHANGE, RabbitMQConstant.TOPIC_MESSAGE_QUEUE, message);
+        amqpTemplate.convertAndSend(RabbitMQConstant.EXCHANGE_TOPIC, RabbitMQConstant.QUEUE_TOPIC_MESSAGE, message);
     }
 
     public void sendMessage2(String message) {
         logger.info("send message2: {}",  message);
-        amqpTemplate.convertAndSend(RabbitMQConstant.TOPIC_EXCHANGE, RabbitMQConstant.TOPIC_MESSAGES_QUEUE, message);
+        amqpTemplate.convertAndSend(RabbitMQConstant.EXCHANGE_TOPIC, RabbitMQConstant.QUEUE_TOPIC_MESSAGES, message);
     }
 
     public void sendMessage3(String message) {
         logger.info("send message3: {}",  message);
-        amqpTemplate.convertAndSend(RabbitMQConstant.TOPIC_EXCHANGE, RabbitMQConstant.TOPIC_MESSAGE_1_QUEUE, message);
+        amqpTemplate.convertAndSend(RabbitMQConstant.EXCHANGE_TOPIC, RabbitMQConstant.QUEUE_TOPIC_MESSAGE_1, message);
     }
 
 }

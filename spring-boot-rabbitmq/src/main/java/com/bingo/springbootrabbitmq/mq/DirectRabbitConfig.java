@@ -14,18 +14,18 @@ public class DirectRabbitConfig {
 
     @Bean
     public Queue directQueue() {
-        return new Queue(RabbitMQConstant.DIRECT_QUEUE);
+        return new Queue(RabbitMQConstant.QUEUE_DIRECT);
     }
 
     @Bean
     DirectExchange directExchange() {
-        return new DirectExchange(RabbitMQConstant.DIRECT_EXCHANGE);
+        return new DirectExchange(RabbitMQConstant.EXCHANGE_DIRECT);
     }
 
 
     @Bean
     Binding bindingExchangeMessage(Queue directQueue, DirectExchange directExchange) {
-        return BindingBuilder.bind(directQueue).to(directExchange).with(RabbitMQConstant.DIRECT_ROUTING);
+        return BindingBuilder.bind(directQueue).to(directExchange).with(RabbitMQConstant.ROUTING_DIRECT);
     }
 
 }
