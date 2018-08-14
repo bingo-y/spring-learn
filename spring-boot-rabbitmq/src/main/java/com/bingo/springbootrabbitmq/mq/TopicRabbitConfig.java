@@ -29,7 +29,7 @@ public class TopicRabbitConfig {
 
     @Bean
     Binding bindingExchangeMessage(Queue topicMessageQueue, TopicExchange topicExchange) {
-        return BindingBuilder.bind(topicMessageQueue).to(topicExchange).with(RabbitMQConstant.QUEUE_TOPIC_MESSAGE);
+        return BindingBuilder.bind(topicMessageQueue).to(topicExchange).with(RabbitMQConstant.ROUTING_TOPIC_MESSAGE);
     }
 
     @Bean

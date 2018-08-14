@@ -16,6 +16,7 @@ public class RabbitMQConstant {
     public static final String ROUTING_MANY = "bingo.many";
     public static final String QUEUE_MANY = "bingo.many";
 
+    public static final String ROUTING_TOPIC_MESSAGE = "bingo.topic.r.message";
     public static final String QUEUE_TOPIC_MESSAGE = "bingo.topic.message";
     public static final String QUEUE_TOPIC_MESSAGES = "bingo.topic.message2";
     public static final String ROUTING_TOPIC_MESSAGE_ALL = "bingo.topic.#";

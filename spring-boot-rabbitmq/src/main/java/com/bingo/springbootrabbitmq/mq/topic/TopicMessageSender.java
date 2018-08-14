@@ -22,7 +22,7 @@ public class TopicMessageSender {
 
     public void sendMessage(String message) {
         logger.info("send message1: {}",  message);
-        amqpTemplate.convertAndSend(RabbitMQConstant.EXCHANGE_TOPIC, RabbitMQConstant.QUEUE_TOPIC_MESSAGE, message);
+        amqpTemplate.convertAndSend(RabbitMQConstant.EXCHANGE_TOPIC, RabbitMQConstant.ROUTING_TOPIC_MESSAGE, message);
     }
 
     public void sendMessage2(String message) {
