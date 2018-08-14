@@ -29,11 +29,10 @@ public class DirectReceiver {
      */
     @RabbitListener(queues = {RabbitServerConfig.QUEUE_DIRECT})
     public void message(Message message, Channel channel) throws IOException, InterruptedException {
-        log.debug("message arrive");
-        Thread.sleep(10L);
+        log.info("message arrive");
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-        log.debug("DIRECT " + new String (message.getBody()));
-        log.debug("message listener thread id:{}, name:{}: ", Thread.currentThread().getId(), Thread.currentThread().getName());
+        log.info("message: " + new String (message.getBody()));
+        log.info("message listener thread id:{}, name:{}: ", Thread.currentThread().getId(), Thread.currentThread().getName());
     }
 
     /**
@@ -45,9 +44,9 @@ public class DirectReceiver {
      */
     @RabbitListener(queues = {RabbitServerConfig.QUEUE_DL})
     public void deadLetter(Message message, Channel channel) throws IOException, InterruptedException {
-        log.debug("QUEUE_DL arrive");
+        log.info("QUEUE_DL arrive");
         channel.basicReject(message.getMessageProperties().getDeliveryTag(), false);
-        log.debug("DEAD LETTER " + new String (message.getBody()));
+        log.info("DEAD LETTER " + new String (message.getBody()));
     }
 
     /**
@@ -59,9 +58,9 @@ public class DirectReceiver {
      */
     @RabbitListener(queues = {RabbitServerConfig.QUEUE_REDIRECT})
     public void deadLetterRedirect(Message message, Channel channel) throws IOException, InterruptedException {
-        log.debug("QUEUE_REDIRECT arrive");
+        log.info("QUEUE_REDIRECT arrive");
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-        log.debug("DEAD LETTER REDIRECT " + new String (message.getBody()));
+        log.info("DEAD LETTER REDIRECT " + new String (message.getBody()));
     }
 
 }

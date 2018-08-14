@@ -29,10 +29,10 @@ public class DirectReceiver2 {
      */
     @RabbitListener(queues = {RabbitServerConfig.QUEUE_DIRECT})
     public void message2(Message message, Channel channel) throws IOException {
-        log.debug("message2 arrive");
+        log.info("message2 arrive");
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-        log.debug("DIRECT " + new String (message.getBody()));
-        log.debug("message2 listener thread id:{}, name:{}: ", Thread.currentThread().getId(), Thread.currentThread().getName());
+        log.info("message2: " + new String (message.getBody()));
+        log.info("message2 listener thread id:{}, name:{}: ", Thread.currentThread().getId(), Thread.currentThread().getName());
     }
 
 }

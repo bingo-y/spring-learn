@@ -11,6 +11,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,7 @@ public class RabbitController {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
-    @RequestMapping("/send")
+    @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String sendDirect(@RequestParam("name") String name) {
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
         for (int i = 0; i < 20; i++) {

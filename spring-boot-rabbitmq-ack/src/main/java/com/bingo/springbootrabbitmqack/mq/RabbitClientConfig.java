@@ -41,12 +41,12 @@ public class RabbitClientConfig {
         rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         rabbitTemplate.setEncoding("UTF-8");
         // 开启returncallback yml 需要 配置 publisher-returns: true
-//        rabbitTemplate.setMandatory(true);
+        rabbitTemplate.setMandatory(true);
         rabbitTemplate.setReturnCallback(new RabbitTemplate.ReturnCallback() {
             @Override
             public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
 
-                logger.debug("消息：{} 发送失败, 应答码：{} 原因：{} 交换机: {}  路由键: {}",
+                logger.info("消息：{} 发送失败, 应答码：{} 原因：{} 交换机: {}  路由键: {}",
                         message.getMessageProperties().getCorrelationId(), replyCode, replyText, exchange, routingKey);
             }
         });
@@ -55,7 +55,7 @@ public class RabbitClientConfig {
             @Override
             public void confirm(CorrelationData correlationData, boolean ack, String cause) {
                 if (ack) {
-                    logger.debug("消息发送到exchange成功,id: {}", correlationData.getId());
+                    logger.info("消息发送到exchange成功,id: {}", correlationData.getId());
                 } else {
                     logger.debug("消息发送到exchange失败,原因: {}", cause);
                 }
